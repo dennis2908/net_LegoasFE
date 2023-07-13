@@ -84,7 +84,11 @@ function configRoutes() {
 
   let penggunaAkun = { path: '/penggunaAkun/list', redirect: { name: 'Home' } }
 
+
+
   if (OpsiLayar !== "") {
+
+    console.log(44444444, OpsiLayar);
 
     if (OpsiLayar.filter(e => e.namaLayar === 'Menu Akun').length > 0) {
       akun = {
@@ -246,34 +250,36 @@ function configRoutes() {
           }
         ]
       };
-    }
-  };
-
-  if (OpsiLayar.filter(e => e.namaLayar === 'Menu Pengguna Akun').length > 0) {
-    penggunaAkun = {
-      path: 'penggunaAkun',
-      redirect: 'penggunaAkun',
-      name: 'Daftar Pengguna & Akun',
-      component: {
-        render(c) { return c('router-view') }
-      },
-      children: [
-        {
-          path: 'daftar',
-          component: {
-            render(c) {
-              return c('router-view')
-            }
-          },
-          children: [
-            {
-              path: '',
-              component: PenggunaAkun
-            }
-          ]
-        }
-      ]
     };
+    if (OpsiLayar.filter(e => e.namaLayar === 'Menu Pengguna Akun').length > 0) {
+      penggunaAkun = {
+        path: 'penggunaAkun',
+        redirect: 'penggunaAkun',
+        name: 'Daftar Pengguna & Akun',
+        component: {
+          render(c) { return c('router-view') }
+        },
+        children: [
+          {
+            path: 'daftar',
+            component: {
+              render(c) {
+                return c('router-view')
+              }
+            },
+            children: [
+              {
+                path: '',
+                component: PenggunaAkun
+              }
+            ]
+          }
+        ]
+      };
+
+    };
+
+
   }
 
   return [

@@ -4,8 +4,15 @@ module.exports = {
   configureWebpack: {
     //Necessary to run npm link https://webpack.js.org/configuration/resolve/#resolve-symlinks
     resolve: {
-       symlinks: false
+      symlinks: false
     }
+  },
+  devServer: {
+    open: process.platform === 'darwin',
+    host: '0.0.0.0',
+    port: 8093, // CHANGE YOUR PORT HERE!
+    https: false,
+    hotOnly: false,
   },
   transpileDependencies: [
     '@coreui/utils',
